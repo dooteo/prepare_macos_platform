@@ -1,0 +1,94 @@
+{
+    "description": "List of applications and archives to install automatically on Mac",
+    "version": "0.0.1",
+    "commented_applications_node": {
+        "name": "Application name",
+        "type": "Type of program",
+        "description": "Short description for the user",
+        "license": "Type of license",
+        "url": "To download the package from",
+        "pre_download": "Script to run before download",
+        "post_download": "Script to run after download",
+        "pre_install": "Script to run before install",
+        "post_install": "Script to run after install"
+    },
+    "commented_applications_node": {
+        "name": "Archive name (not to be installed)",
+        "url": "To download the archive from"
+    },
+    "applications": [
+        {   "name": "Firefox",
+            "id": "01",
+            "type": "office",
+            "description": "Web Browser",
+            "license": "Mozilla Public License (MPL) 2.0",
+            "url": "https://download.mozilla.org/?product=firefox-latest-ssl&os=osx&lang=en-US",
+            "pre_download": "",
+            "post_download": "",
+            "pre_install": "",
+            "post_install": ""
+        }
+        ,{  "name": "UTM",
+            "id": "02",
+            "type": "developement",
+            "description": "Virtual Machine (QEMU)",
+            "license": "GPL v2, GPL v3, LGPL v2.1",
+            "url": "https://github.com/utmapp/UTM/releases/latest/download/UTM.dmg",
+            "pre_download": "",
+            "post_download": "",
+            "pre_install": "",
+            "post_install": ""
+        }
+        ,{  "name": "Betterbird",
+            "id": "03",
+            "type": "office",
+            "description": "Email client",
+            "license": "Mozilla Public License v2.0",
+            "url": "https://www.betterbird.eu/downloads/get.php?os=mac-arm64&lang=en-US&version=release",
+            "pre_download": "",
+            "post_download": "",
+            "pre_install": "",
+            "post_install": ""
+        }
+        ,{  "name": "iTerm2",
+            "id": "04",
+            "type": "devel",
+            "description": "Cool terminal for MacOS",
+            "license": "GPL v2",
+            "url": "https://iterm2.com/downloads/stable/iTerm2-3_7_4.zip",
+            "pre_download": "",
+            "post_download": "",
+            "pre_install": "",
+            "post_install": ""
+        }
+        ,{  "name": "MacVim",
+            "id": "05",
+            "type": "devel",
+            "description": "Vim for MacOS",
+            "license": "VIM LICENSE",
+            "url": "https://github.com/macvim-dev/macvim/releases/download/release-183/MacVim.dmg",
+            "pre_download": "",
+            "post_download": "",
+            "pre_install": "",
+            "post_install": ""
+        }
+    ],
+    "archives": [
+        {  "name": "Propaganda Tiles",
+            "id": "arc_01",
+            "type": "devel",
+            "depedends_on": {
+                "apps_ids": ["02"],
+                "arch_ids": []
+            },
+            "deps_on_apps": "",
+            "description": "Cool background tiles, great for iTerm2 termninal",
+            "license": "GPL",
+            "url": "https://github.com/BenjaminHCCarr/PropagandaTiles/archive/refs/heads/master.zip",
+            "pre_download": "",
+            "post_download": "",
+            "pre_install": "",
+            "post_install": ""
+        }
+    ]
+}
