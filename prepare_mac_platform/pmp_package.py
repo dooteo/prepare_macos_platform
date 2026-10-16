@@ -12,8 +12,9 @@ class Package(Downloader, Installer, Utils):
     # --|   Methods: Private     |
     #   '------------------------'
 
-    def __init__(self, data):
+    def __init__(self, data, type_str):
         self.data = data
+        self.data['type_str'] = type_str
 
 
     # ---- ---- Setters ---- ----
@@ -64,6 +65,7 @@ class Package(Downloader, Installer, Utils):
             f'''
 -- Name: {self.data['name']}
 \tDescription: {self.data['description']}
+\tType: {self.data['type_str']}
 \tURL: {self.data['url']}
 \tLicense: {self.data['license']}
 \tPre-Download Cmd: {self.data['pre_download']}

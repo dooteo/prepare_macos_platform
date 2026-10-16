@@ -62,14 +62,23 @@ class JsonData:
     def get_application_data(self, index):
         return self.json_data[self.JSON_ATTRIB_APPS][index]
 
+    def get_application_type_str(self, index):
+        type_idx = self.json_data[self.JSON_ATTRIB_APPS][index]['type']
+        if type_idx < len(self.json_data['types']):
+            return self.json_data['types'][type_idx]
+        else:
+            return "Unknown"
+
     def get_app_url(self, index):
         return self.json_data[self.JSON_ATTRIB_APPS][index]['url']
 
     def get_app_objs(self):
             app_pbj_list = []
             total_apps = self.get_app_total_items()
+
             for i in range(total_apps):
-                cur_app_obj = Package(self.get_application_data(i))
+                cur_type_str = self.get_application_type_str(i)
+                cur_app_obj = Package(self.get_application_data(i), cur_type_str)
                 app_pbj_list.append(cur_app_obj)
             return app_pbj_list
 
