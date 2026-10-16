@@ -2,9 +2,10 @@ import os
 
 from prepare_mac_platform.pmp_downloader import Downloader
 from prepare_mac_platform.pmp_installer import Installer
+from prepare_mac_platform.pmp_extractor import Extractor
 from prepare_mac_platform.pmp_utils import Utils
 
-class Package(Downloader, Installer, Utils):
+class Package(Downloader, Installer, Extractor, Utils):
 
     data = {}
     #version = "0.0.1"
@@ -55,7 +56,7 @@ class Package(Downloader, Installer, Utils):
     def download(self):
         self._pre_download()
 
-        location = self.download_application(self._get_url())
+        location = self.download_node(self._get_url())
         self._set_downloaded_at(location)
 
         self._post_download()
@@ -80,7 +81,7 @@ class Package(Downloader, Installer, Utils):
         self._pre_install()
 
         location = self._get_downloaded_path()
-        pkg_name = self._get_pkg_name()
-        self.install_application(location, pkg_name)
+        node_name = self._get_pkg_name()
+        self.install_application(location, node_name)
 
         self._post_install()

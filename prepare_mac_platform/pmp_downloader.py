@@ -25,7 +25,8 @@ class Downloader:
     # --|   Methods: Public      |
     #   '------------------------'
 
-    def download_application(self, cur_url):
+    #def download_application(self, cur_url):
+    def download_node(self, cur_url):
         print(f'---- URL: {cur_url}')
         target_file_path = ""
         try:

@@ -1,6 +1,6 @@
 {
     "description": "List of applications and archives to install automatically on Mac",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "commented_applications_node": {
         "name": "Application name",
         "type": "Type of program",
@@ -20,7 +20,10 @@
         "pre_download": "Script to run before download",
         "post_download": "Script to run after download"
     },
-    "types": ["Developement", "Internet", "Multimedia", "Office", "Utilities"],
+    "types": [
+        "Developement", "Internet", "Multimedia", "Music", 
+        "Office", "Pictures", "Utilities"
+    ],
     "applications": [
         {   "name": "Firefox",
             "id": "01",
@@ -81,7 +84,7 @@
     "archives": [
         {  "name": "Propaganda Tiles",
             "id": "arc_01",
-            "type": 2,
+            "type": 5,
             "depedends_on": {
                 "apps_ids": ["02"],
                 "arch_ids": []
@@ -90,7 +93,10 @@
             "license": "GPL",
             "url": "https://github.com/BenjaminHCCarr/PropagandaTiles/archive/refs/heads/master.zip",
             "pre_download": "",
-            "post_download": ""
+            "post_download": "",
+            "target_dir": "${HOME}/Pictures",
+            "pre_install": "",
+            "post_install": ""            
         }
     ]
 }

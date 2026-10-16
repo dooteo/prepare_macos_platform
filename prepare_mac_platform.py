@@ -6,38 +6,32 @@ import sys
 import prepare_mac_platform.pmp_global_vars as globalvars
 from prepare_mac_platform.pmp_json import JsonData
 from prepare_mac_platform.pmp_package import Package
+from prepare_mac_platform.pmp_archive import Archive
 
 #   .---------------.
 # --|   Functions   |
 #   '---------------'
+def download_all_objs(node_obj_list):
+    create_dir(globalvars.DOWNLOADS_DIR)
+
+    for cur_obj in node_obj_list:
+        cur_obj.download()
+# ---- ---- ---- ----
+
+def install_all_objs(node_obj_list):
+    print("-- Install Step --")
+    for cur_obj in node_obj_list:
+        cur_obj.install()
+# ---- ---- ---- ----
+
+def print_all_obj_info(node_obj_list):
+    for cur_obj in node_obj_list:
+        cur_obj.print_info()
+# ---- ---- ---- ----
 
 def create_dir(target_dir):
     if not os.path.exists(target_dir):
         os.makedirs(target_dir)
-# ---- ---- ---- ----
-
-def print_all_app_info(applications):
-    for cur_app in applications:
-        cur_app.print_info()
-# ---- ---- ---- ----
-
-def download_all_applications(applications):
-    create_dir(globalvars.DOWNLOADS_DIR)
-
-    for cur_app in applications:
-        cur_app.download()
-# ---- ---- ---- ----
-
-def install_all_applications(applications):
-    print("-- Install Applications Step --")
-    for cur_app in applications:
-        cur_app.install()
-# ---- ---- ---- ----
-
-def install_all_archives(archives):
-    print("-- Install Archives Step --")
-    for cur_archive in archives:
-        cur_archive.install()
 # ---- ---- ---- ----
 
 
@@ -49,11 +43,15 @@ def main():
     print("\n---- ---- ---- ---- \nWelcome to download, install and set up programs to make you comfortable with the Mac experience")
 
     jdata = JsonData()
-    pkg_list = jdata.get_app_objs()
-    
-    print_all_app_info(pkg_list)
-    download_all_applications(pkg_list)
-    install_all_applications(pkg_list)
+    app_list, archive_list = jdata.get_node_objs()
+
+    print_all_obj_info(app_list)
+    download_all_objs(app_list)
+    install_all_objs(app_list)
+
+    print_all_obj_info(archive_list)
+    download_all_objs(archive_list)
+    install_all_objs(archive_list)
 
     print("\n---- ---- ---- ----\n")
     print("Please, run manually one by one installed program")
