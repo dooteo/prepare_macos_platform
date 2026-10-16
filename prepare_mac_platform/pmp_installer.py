@@ -132,20 +132,4 @@ class Installer:
         else:
             print(f"Unknown extension: {archive_path}")
     # ---- ---- ---- ----
-
-
-#   .------------------------.
-# --|   Functions: Public    |
-#   '------------------------'
-
-def install_all_applications(applications):
-    print("-- Install Applications Step --")
-    for cur_app in applications:
-        cur_app.install()
-    # ---- ---- ---- ----
-
-def install_all_archives(archives):
-    print("-- Install Archives Step --")
-    for cur_archive in archives:
-        cur_archive.install()
-    # ---- ---- ---- ----
+# ---- ---- End of Class: Installer ---- ----

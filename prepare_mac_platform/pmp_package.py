@@ -2,11 +2,12 @@ import os
 
 from prepare_mac_platform.pmp_downloader import Downloader
 from prepare_mac_platform.pmp_installer import Installer
+from prepare_mac_platform.pmp_utils import Utils
 
-class Package(Downloader, Installer):
+class Package(Downloader, Installer, Utils):
 
     data = {}
-    version = "0.0.1"
+    #version = "0.0.1"
     #   .------------------------.
     # --|   Methods: Private     |
     #   '------------------------'
@@ -35,16 +36,16 @@ class Package(Downloader, Installer):
         return self.data['url']
 
     def _pre_download(self):
-        self._run_command_script(self.data['pre_download'])
+        self._run_field_command_script('pre_download')
 
     def _post_download(self):
-        self._run_command_script(self.data['post_download'])
+        self._run_field_command_script('post_download')
 
     def _pre_install(self):
-        self._run_command_script(self.data['pre_install'])
+        self._run_field_command_script('pre_install')
 
     def _post_install(self):
-        self._run_command_script(self.data['post_install'])
+        self._run_field_command_script('post_install')
 
     #   .------------------------.
     # --|   Methods: Public      |
@@ -57,7 +58,20 @@ class Package(Downloader, Installer):
         self._set_downloaded_at(location)
 
         self._post_download()
-        
+
+    def print_info(self):
+        print(
+            f'''
+-- Name: {self.data['name']}
+\tDescription: {self.data['description']}
+\tURL: {self.data['url']}
+\tLicense: {self.data['license']}
+\tPre-Download Cmd: {self.data['pre_download']}
+\tPost-Download Cmd: {self.data['post_download']}
+\tPre-Install Cmd: {self.data['pre_install']}
+\tPost-Install Cmd: {self.data['post_install']}'''
+        )
+
     # ---- ---- ---- ----
 
     def install(self):

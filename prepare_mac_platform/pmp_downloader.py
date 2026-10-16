@@ -47,24 +47,8 @@ class Downloader:
             return target_file_path
         except urllib.error.HTTPError as e:
             _urllib_exception(e)
-
     # ---- ---- ---- ----
 
-    def _run_command_script(self, command):
-        if not command:
-            return
-        print(f"Run cmd: \n---- ---- ----\n{command}\n---- ---- ----\n")
+# ---- ---- End of Class: Downloader ---- ----
 
-def _create_dir(target_dir):
-    if not os.path.exists(target_dir):
-        os.makedirs(target_dir)
 
-#   .------------------------.
-# --|   Functions: Public    |
-#   '------------------------'
-
-def download_all_applications(applications):
-    _create_dir(globalvars.DOWNLOADS_DIR)
-
-    for cur_app in applications:
-        cur_app.download()
