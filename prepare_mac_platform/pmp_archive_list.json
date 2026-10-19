@@ -80,6 +80,17 @@
             "pre_install": "",
             "post_install": ""
         }
+        ,{  "name": "VSCodium",
+            "id": "06",
+            "type": 0,
+            "description": "Visual Studio Codium for MacOS Silicon",
+            "license": "VIM LICENSE",
+            "url": "https://github.com/VSCodium/vscodium/releases/download/1.140.06880/VSCodium.arm64.1.140.06880.dmg",
+            "pre_download": "",
+            "post_download": "",
+            "pre_install": "",
+            "post_install": ""
+        }
     ],
     "archives": [
         {  "name": "Propaganda Tiles",
